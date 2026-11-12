@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MBTA Speed and Breakdowns</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  color-scheme: light;
+  --surface:#fcfcfb; --surface-2:#f3f2ef; --border:#dddcd6;
+  --text:#0b0b0b; --text-2:#52514e; --text-3:#7a7974;
+  --mark:#eb6834; --mark-quiet:#9a9992; --ring:#fcfcfb; --focus:#2a78d6;
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme: dark;
+    --surface:#1a1a19; --surface-2:#242422; --border:#3a3a37;
+    --text:#f0efec; --text-2:#c3c2b7; --text-3:#98978f;
+    --mark:#d95926; --mark-quiet:#77766f; --ring:#1a1a19; --focus:#3987e5;
+  }
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--surface);color:var(--text);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+.app{display:grid;grid-template-columns:340px 1fr;height:100%}
+aside{overflow:auto;padding:16px;border-right:1px solid var(--border);background:var(--surface)}
+h1{font-size:18px;margin:0 0 2px;font-weight:650}
+.sub{color:var(--text-2);margin:0 0 14px;font-size:13px}
+.badge{display:inline-block;font-size:11px;padding:1px 7px;border-radius:99px;background:var(--surface-2);border:1px solid var(--border);color:var(--text-2);margin-left:6px;vertical-align:2px}
+h2{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-2);margin:18px 0 6px;font-weight:600}
+.row{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:99px;padding:4px 10px;font:inherit;font-size:13px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--text);color:var(--surface);border-color:var(--text)}
+.chip:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-weight:500;color:var(--text-2);text-align:right;padding:3px 4px;font-size:12px}
+th:first-child,td:first-child,#rank td:nth-child(2),#rank th:nth-child(2){text-align:left}
+td{padding:4px;text-align:right;border-top:1px solid var(--border);font-variant-numeric:tabular-nums}
+tr.sub td:first-child{padding-left:14px;color:var(--text-2)}
+tr.rank{cursor:pointer} tr.rank:hover td{background:var(--surface-2)}
+td.num{color:var(--text-2);width:22px}
+.legend{margin-top:6px}
+.lrow{display:grid;grid-template-columns:54px 1fr;align-items:center;gap:8px;margin:5px 0;font-size:13px}
+.lrow .ramp{height:12px}
+.lscale{display:flex;justify-content:space-between;color:var(--text-2);font-size:12px;margin-left:62px}
+.dotkey{display:flex;align-items:center;gap:6px;color:var(--text-2);font-size:12px;margin-top:10px}
+.ramp{height:10px;border-radius:5px;border:1px solid var(--border)}
+.legend .ends{display:flex;justify-content:space-between;color:var(--text-2);font-size:12px;margin-top:2px}
+.note{color:var(--text-3);font-size:12px;margin-top:14px}
+.dot{display:inline-block;border-radius:50%;background:var(--mark);border:2px solid var(--ring);box-shadow:0 0 0 1px var(--mark-quiet)}
+#map{height:100%;background:var(--surface-2)}
+.basetile{filter:grayscale(1) contrast(.85) brightness(1.08);opacity:.55}
+.isdark .basetile{filter:invert(1) grayscale(1) contrast(.8) brightness(.85);opacity:.6}
+.leaflet-tooltip{background:var(--surface);color:var(--text);border:1px solid var(--border);box-shadow:none;font-size:13px}
+.leaflet-tooltip b{font-weight:650} .tt-sub{color:var(--text-2)}
+@media (max-width:760px){
+  .app{grid-template-columns:1fr;grid-template-rows:55vh auto;height:auto}
+  #map{height:55vh;order:-1} aside{border-right:0;border-top:1px solid var(--border)}
+  body,html{height:auto}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <h1>MBTA subway speed &amp; breakdowns <span class="badge" id="label"></span></h1>
+  <p class="sub">Each track keeps its line colour. <b>Darker, richer colour = slower</b>; <b>lighter = faster</b>. Grey dots mark stations where trains have broken down.</p>
+
+  <h2>Lines</h2>
+  <div class="row" id="lines" role="group" aria-label="Line filter"></div>
+
+  <h2>Track speed</h2>
+  <div class="legend" id="speedlegend"></div>
+  <div class="row" id="mode" role="group" aria-label="Speed measure" style="margin-top:10px">
+    <button class="chip" data-m="mph" aria-pressed="true">All trains</button>
+    <button class="chip" data-m="mph_clean" aria-pressed="false">Excluding delays</button>
+  </div>
+
+  <h2>Breakdowns</h2>
+  <p class="sub" style="margin-bottom:8px">A <b>breakdown</b> = one incident of a train sitting stopped for at least this long. Dots and rankings count incidents, summed over <b id="period"></b>.</p>
+  <div class="row" id="thr" role="group" aria-label="Minutes stopped to count as a breakdown"></div>
+  <div class="dotkey"><span class="dot" style="width:8px;height:8px;background:#e3e3df"></span> fewer <span class="dot" style="width:20px;height:20px;background:#000"></span> more breakdowns (darker = higher rank)</div>
+
+  <h2 id="rankTitle">Top stations</h2>
+  <table id="rank"><thead><tr><th></th><th>Station</th><th>Count</th></tr></thead><tbody></tbody></table>
+
+  <h2>Average speed by line (mph)</h2>
+  <table id="speeds"><thead><tr><th>Line</th><th>Moving</th><th>Door-to-door</th><th>Scheduled</th></tr></thead><tbody></tbody></table>
+
+  <p class="note"><b>Moving</b> = departure to next arrival, no station stop. <b>Door-to-door</b> includes time stopped in stations and is the like-for-like match to the <b>scheduled</b> speed, whose timetable already includes stops.</p>
+  <p class="note">A breakdown is a train stopped at least the chosen number of minutes (dwell, or running time over schedule), cascading stops merged and credited to the frontmost station. Excludes terminal layovers, planned shutdowns, and <span id="holds"></span> habitual timed holds (mostly inbound Green Line).</p>
+</aside>
+<div id="map" aria-label="Map of subway segments coloured by speed with stations sized by breakdown count"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const D = __DATA__;
+const $ = s => document.querySelector(s);
+const dark = matchMedia('(prefers-color-scheme: dark)');
+// Per-line ramps: stops run slow (deep, saturated) -> fast (light), so speed reads as a gradient inside each line's own colour.
+const LINE_RAMP = {
+  Red:    ['#a50f0f','#d9433b','#f4a29c'],
+  Orange: ['#b45309','#ee8b1a','#f9c98a'],
+  Blue:   ['#00348f','#2f6bd0','#9dbbee'],
+  Green:  ['#005a31','#1f9a5b','#99d6b2'],
+};
+const hex = h => [1,3,5].map(i => parseInt(h.slice(i,i+2),16));
+const lerp = (stops,t) => { t=Math.max(0,Math.min(1,t)); const x=t*(stops.length-1), i=Math.min(Math.floor(x),stops.length-2), f=x-i;
+  const a=hex(stops[i]), b=hex(stops[i+1]); return '#'+a.map((v,k)=>Math.round(v+(b[k]-v)*f).toString(16).padStart(2,'0')).join(''); };
+const state = { thr:'5', mode:'mph', lines:new Set(['Red','Orange','Blue','Green']) };
+$('#label').textContent = D.label; $('#period').textContent = D.label.replace('Jan–Oct 2026','all of Jan–Oct 2026 (10 months)'); $('#holds').textContent = D.habitual_holds ?? '';
+
+const map = L.map('map', {zoomControl:true, preferCanvas:false}).setView([42.355,-71.08], 12);
+// OpenStreetMap standard tiles (no key needed). Dark mode inverts + desaturates them via CSS so tracks stay legible.
+const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors',maxZoom:19,className:'basetile'});
+let tl=null;
+const segLayer = L.layerGroup().addTo(map), stLayer = L.layerGroup().addTo(map);
+
+function range(){ const v=D.segments.map(s=>s[state.mode]??s.mph).sort((a,b)=>a-b);
+  return [v[Math.floor(v.length*.05)], v[Math.floor(v.length*.95)]]; }
+// Breakdown dots: light grey (few) -> near-black (many).
+const GREY = ['#e3e3df','#b0b0ab','#76766f','#3a3a36','#000000'];
+const greyFor = t => lerp(GREY, t);
+function draw(){
+  const isDark = dark.matches;
+  if (!tl) { tl = tiles.addTo(map); } document.documentElement.classList.toggle('isdark', isDark);
+  const [lo,hi] = range();
+  $('#speedlegend').innerHTML = Object.keys(LINE_RAMP).map(l=>`<div class="lrow"><span>${l}</span><div class="ramp" style="background:linear-gradient(90deg,${LINE_RAMP[l].join(',')})"></div></div>`).join('')
+    + `<div class="lscale"><span>slow ≤ ${lo.toFixed(0)} mph</span><span>fast ≥ ${hi.toFixed(0)} mph</span></div>`;
+  segLayer.clearLayers(); stLayer.clearLayers();
+  D.segments.filter(s=>s.line.some(l=>state.lines.has(l))).forEach(s=>{
+    const v = s[state.mode] ?? s.mph;
+    const ln = s.line.find(l=>state.lines.has(l)), ramp = LINE_RAMP[ln];
+    L.polyline(s.geom,{color:ramp[0],weight:8,opacity:.35,lineCap:'round',interactive:false}).addTo(segLayer); // casing keeps pale (fast) tracks visible
+    const pl = L.polyline(s.geom,{color:lerp(ramp,1-(v-lo)/(hi-lo)),weight:5,opacity:1,lineCap:'round'}).addTo(segLayer);
+    pl.bindTooltip(`<b>${s.a} – ${s.b}</b><br>${v.toFixed(1)} mph moving${state.mode==='mph_clean'?' (excl. delays)':''}<br><span class="tt-sub">${s.mph.toFixed(1)} mph all trains · ${s.mi} mi · ${s.n.toLocaleString()} train passes<br>${s.routes.join(', ')}</span>`,{sticky:true});
+    pl.on('mouseover',()=>pl.setStyle({weight:8})).on('mouseout',()=>pl.setStyle({weight:5}));
+  });
+  const vis = D.stations.filter(s=>s.lines.split('/').some(l=>state.lines.has(l)) || !s.lines);
+  const max = Math.max(1,...vis.map(s=>s.inc[state.thr]));
+  // Shade by rank among stations with breakdowns (not raw count) so a few huge outliers don't wash everyone else out to the same pale grey.
+  const vals = vis.map(s=>s.inc[state.thr]).filter(n=>n>0).sort((a,b)=>a-b);
+  const pct = n => vals.length>1 ? (vals.findIndex(v=>v>=n) + vals.lastIndexOf(n) + 1) / 2 / (vals.length-1) : 1;
+  vis.sort((a,b)=>b.inc[state.thr]-a.inc[state.thr]).forEach(s=>{
+    const n = s.inc[state.thr];
+    const m = L.circleMarker([s.lat,s.lon],{radius:n? 3.5+11*Math.sqrt(n/max):2.5, weight:n?2:1,
+      color:getComputedStyle(document.documentElement).getPropertyValue('--ring'),
+      fillColor:n?greyFor(Math.min(1,pct(n))):getComputedStyle(document.documentElement).getPropertyValue('--mark-quiet'),
+      fillOpacity:n?.9:.7}).addTo(stLayer);
+    m.bindTooltip(`<b>${s.name}</b><br>${n} breakdown${n===1?'':'s'} in ${D.label} (stopped ≥${state.thr} min)<br><span class="tt-sub">${[3,5,10].map(t=>`≥${t} min: ${s.inc[t]}`).join(' · ')}${s.visits?`<br>${s.visits.toLocaleString()} train stops`:''}</span>`);
+    s._m = m;
+  });
+  rank();
+}
+function rank(){
+  const top = D.stations.filter(s=>s.lines.split('/').some(l=>state.lines.has(l))).sort((a,b)=>b.inc[state.thr]-a.inc[state.thr]).slice(0,15);
+  $('#rankTitle').textContent = `Most breakdowns, ${D.label} (stopped ≥${state.thr} min)`;
+  $('#rank tbody').innerHTML = top.map((s,i)=>`<tr class="rank" data-id="${s.id}"><td class="num">${i+1}</td><td>${s.name} <span class="tt-sub" style="color:var(--text-3)">${s.lines}</span></td><td>${s.inc[state.thr]}</td></tr>`).join('');
+  document.querySelectorAll('tr.rank').forEach(tr=>tr.onclick=()=>{ const s=D.stations.find(x=>x.id===tr.dataset.id); map.flyTo([s.lat,s.lon],14); s._m&&s._m.openTooltip(); });
+}
+$('#thr').innerHTML = ['3','5','10'].map(t=>`<button class="chip" data-t="${t}" aria-pressed="${t===state.thr}">${t} min</button>`).join('');
+$('#thr').onclick = e=>{ const b=e.target.closest('button'); if(!b)return; state.thr=b.dataset.t; document.querySelectorAll('#thr .chip').forEach(c=>c.setAttribute('aria-pressed',c===b)); draw(); };
+$('#mode').onclick = e=>{ const b=e.target.closest('button'); if(!b)return; state.mode=b.dataset.m; document.querySelectorAll('#mode .chip').forEach(c=>c.setAttribute('aria-pressed',c===b)); draw(); };
+$('#lines').innerHTML = ['Red','Orange','Blue','Green'].map(l=>`<button class="chip" data-l="${l}" aria-pressed="true">${l}</button>`).join('');
+$('#lines').onclick = e=>{ const b=e.target.closest('button'); if(!b)return; const l=b.dataset.l;
+  state.lines.has(l)?state.lines.delete(l):state.lines.add(l); b.setAttribute('aria-pressed',state.lines.has(l)); draw(); };
+$('#speeds tbody').innerHTML = D.speeds.map(r=>`<tr class="${r.sub?'sub':''}"><td>${r.name}</td><td><b>${r.moving.toFixed(1)}</b></td><td>${r.d2d.toFixed(1)}</td><td>${r.sched.toFixed(1)}</td></tr>`).join('');
+dark.addEventListener('change',draw);
+draw();
+map.invalidateSize(); map.fitBounds(L.latLngBounds(D.segments.flatMap(s=>s.geom)),{padding:[20,20]});
+</script>
+</body>
+</html>

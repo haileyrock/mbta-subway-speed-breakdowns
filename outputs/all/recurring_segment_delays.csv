@@ -1,0 +1,5 @@
+ym,route_id,direction_id,from_parent,to_parent,n,med_excess_min,iqr_rel,from_station,to_station
+2026-08,Green-D,0,place-lech,place-spmnl,177,42.9,0.16355866355866355,Lechmere,Science Park/West End
+2026-10,Green-D,0,place-lech,place-spmnl,139,44.61666666666667,0.05173701905117669,Lechmere,Science Park/West End
+2026-08,Green-D,1,place-spmnl,place-lech,108,44.425,0.1250234477583943,Science Park/West End,Lechmere
+2026-10,Green-D,1,place-spmnl,place-lech,82,44.19166666666667,0.08872336413350933,Science Park/West End,Lechmere

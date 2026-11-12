@@ -1,0 +1,17 @@
+route_id,station_name,parent,first_day,last_day,n_days
+Orange,Chinatown,place-chncl,2026-01-10,2026-01-11,2
+Blue,Government Center,place-gover,2026-01-24,2026-01-25,2
+Blue,Bowdoin,place-bomnl,2026-01-24,2026-01-25,2
+Orange,Haymarket,place-haecl,2026-01-10,2026-01-11,2
+Blue,Wood Island,place-wimnl,2026-01-24,2026-01-25,2
+Blue,Aquarium,place-aqucl,2026-01-24,2026-01-25,2
+Orange,Downtown Crossing,place-dwnxg,2026-01-10,2026-01-11,2
+Blue,Maverick,place-mvbcl,2026-01-24,2026-01-25,2
+Orange,Tufts Medical Center,place-tumnl,2026-01-10,2026-01-11,2
+Orange,Community College,place-ccmnl,2026-01-10,2026-01-11,2
+Orange,State,place-state,2026-01-10,2026-01-11,2
+Orange,Sullivan Square,place-sull,2026-01-10,2026-01-11,2
+Orange,Assembly,place-astao,2026-01-10,2026-01-11,2
+Orange,North Station,place-north,2026-01-10,2026-01-11,2
+Blue,State,place-state,2026-01-24,2026-01-25,2
+Blue,Airport,place-aport,2026-01-24,2026-01-25,2

@@ -1,0 +1,8 @@
+# Raw / intermediate data (large; re-creatable with scripts/)
+Events_2026/
+MBTA_GTFS/
+MBTA_GTFS_archive/
+data_work/
+.DS_Store
+__pycache__/
+Bash tool output*

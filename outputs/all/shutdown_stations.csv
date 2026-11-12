@@ -1,0 +1,123 @@
+route_id,station_name,parent,first_day,last_day,n_days
+Green-E,Symphony,place-symcl,2026-05-30,2026-10-31,153
+Green-C,Brandon Hall,place-bndhl,2026-05-06,2026-10-30,96
+Green-C,Tappan Street,place-tapst,2026-05-06,2026-08-16,59
+Green-C,Copley,place-coecl,2026-04-20,2026-10-31,38
+Green-C,Hynes Convention Center,place-hymnl,2026-04-25,2026-10-31,37
+Green-C,Arlington,place-armnl,2026-04-25,2026-10-31,37
+Green-C,Boylston,place-boyls,2026-04-25,2026-10-31,37
+Green-C,Park Street,place-pktrm,2026-04-25,2026-10-31,37
+Green-C,Government Center,place-gover,2026-04-25,2026-10-31,37
+Green-B,Copley,place-coecl,2026-04-20,2026-10-31,33
+Green-B,Kenmore,place-kencl,2026-04-22,2026-10-31,32
+Green-B,Park Street,place-pktrm,2026-04-22,2026-10-31,32
+Green-B,Boylston,place-boyls,2026-04-22,2026-10-31,32
+Green-B,Boston University Central,place-bucen,2026-04-22,2026-10-31,32
+Green-B,Arlington,place-armnl,2026-04-22,2026-10-31,32
+Green-B,Blandford Street,place-bland,2026-04-22,2026-10-31,32
+Green-B,Amory Street,place-amory,2026-04-22,2026-10-31,32
+Green-B,Boston University East,place-buest,2026-04-22,2026-10-31,32
+Green-B,Hynes Convention Center,place-hymnl,2026-04-22,2026-10-31,32
+Green-B,Government Center,place-gover,2026-04-22,2026-10-31,32
+Green-E,Back of the Hill,place-bckhl,2026-05-30,2026-10-31,31
+Green-E,Mission Park,place-mispk,2026-05-30,2026-10-31,31
+Green-E,Copley,place-coecl,2026-04-20,2026-10-31,31
+Green-E,Riverway,place-rvrwy,2026-05-30,2026-10-31,31
+Green-E,Heath Street,place-hsmnl,2026-05-30,2026-10-31,31
+Green-E,Fenwood Road,place-fenwd,2026-05-30,2026-10-31,31
+Green-E,Arlington,place-armnl,2026-05-30,2026-10-31,30
+Green-E,Boylston,place-boyls,2026-05-30,2026-10-31,30
+Green-E,Longwood Medical Area,place-lngmd,2026-05-30,2026-10-31,30
+Green-E,Park Street,place-pktrm,2026-05-30,2026-10-31,30
+Green-E,Prudential,place-prmnl,2026-05-30,2026-10-31,30
+Green-E,Museum of Fine Arts,place-mfa,2026-05-30,2026-10-31,30
+Green-E,Brigham Circle,place-brmnl,2026-05-30,2026-10-31,30
+Green-E,Northeastern University,place-nuniv,2026-05-30,2026-10-31,30
+Green-D,Copley,place-coecl,2026-04-20,2026-10-31,26
+Green-D,Arlington,place-armnl,2026-04-25,2026-10-31,25
+Green-D,Hynes Convention Center,place-hymnl,2026-04-25,2026-10-31,25
+Green-D,Boylston,place-boyls,2026-04-25,2026-10-31,25
+Green-D,Park Street,place-pktrm,2026-04-25,2026-10-31,25
+Green-D,Government Center,place-gover,2026-08-01,2026-10-31,23
+Green-D,Haymarket,place-haecl,2026-08-01,2026-10-31,23
+Green-C,Kenmore,place-kencl,2026-04-25,2026-08-16,23
+Green-E,Government Center,place-gover,2026-08-01,2026-10-31,23
+Green-E,Haymarket,place-haecl,2026-08-01,2026-10-31,23
+Green-C,Dean Road,place-denrd,2026-05-06,2026-09-14,22
+Green-C,Cleveland Circle,place-clmnl,2026-05-06,2026-08-16,21
+Green-C,Saint Marys Street,place-smary,2026-05-06,2026-08-16,21
+Green-C,Hawes Street,place-hwsst,2026-05-06,2026-08-16,21
+Green-C,Kent Street,place-kntst,2026-05-06,2026-08-16,21
+Green-C,Coolidge Corner,place-cool,2026-05-06,2026-08-16,21
+Green-C,Englewood Avenue,place-engav,2026-05-06,2026-08-16,21
+Green-C,Washington Square,place-bcnwa,2026-05-06,2026-08-16,21
+Green-C,Fairbanks Street,place-fbkst,2026-05-06,2026-08-16,21
+Green-C,Saint Paul Street,place-stpul,2026-05-06,2026-08-16,21
+Green-C,Summit Avenue,place-sumav,2026-05-06,2026-08-16,21
+Orange,Forest Hills,place-forhl,2026-02-14,2026-09-14,15
+Orange,Stony Brook,place-sbmnl,2026-02-14,2026-09-14,15
+Orange,Green Street,place-grnst,2026-02-14,2026-09-14,15
+Orange,Assembly,place-astao,2026-01-10,2026-10-11,15
+Orange,Community College,place-ccmnl,2026-01-10,2026-10-31,14
+Orange,Haymarket,place-haecl,2026-01-10,2026-08-30,13
+Orange,Sullivan Square,place-sull,2026-01-10,2026-08-30,13
+Orange,Chinatown,place-chncl,2026-01-10,2026-08-30,13
+Orange,Downtown Crossing,place-dwnxg,2026-01-10,2026-08-30,13
+Orange,North Station,place-north,2026-01-10,2026-08-30,13
+Orange,Tufts Medical Center,place-tumnl,2026-01-10,2026-08-30,13
+Orange,State,place-state,2026-01-10,2026-08-30,13
+Red,Andrew,place-andrw,2026-02-21,2026-05-31,12
+Orange,Jackson Square,place-jaksn,2026-02-28,2026-09-14,12
+Orange,Massachusetts Avenue,place-masta,2026-02-28,2026-09-14,12
+Orange,Roxbury Crossing,place-rcmnl,2026-02-28,2026-09-14,12
+Orange,Ruggles,place-rugg,2026-02-28,2026-09-14,12
+Red,Ashmont,place-asmnl,2026-02-21,2026-09-20,11
+Red,Fields Corner,place-fldcr,2026-02-21,2026-09-20,11
+Orange,Malden Center,place-mlmnl,2026-08-20,2026-08-30,11
+Red,Savin Hill,place-shmnl,2026-02-21,2026-09-20,11
+Red,Shawmut,place-smmnl,2026-02-21,2026-09-20,11
+Orange,Oak Grove,place-ogmnl,2026-08-20,2026-08-30,11
+Orange,Wellington,place-welln,2026-08-20,2026-08-30,11
+Red,Harvard,place-harsq,2026-07-21,2026-07-30,10
+Red,Porter,place-portr,2026-07-21,2026-07-30,10
+Red,Central,place-cntsq,2026-07-21,2026-07-30,10
+Red,Alewife,place-alfcl,2026-07-21,2026-07-30,10
+Red,Charles/MGH,place-chmnl,2026-07-21,2026-07-30,10
+Red,Davis,place-davis,2026-07-21,2026-07-30,10
+Red,Kendall/MIT,place-knncl,2026-07-21,2026-07-30,10
+Green-B,Sutherland Road,place-sthld,2026-04-22,2026-04-30,9
+Green-B,Warren Street,place-wrnst,2026-04-22,2026-04-30,9
+Green-B,Washington Street,place-wascm,2026-04-22,2026-04-30,9
+Green-B,Boston College,place-lake,2026-04-22,2026-04-30,9
+Green-B,Babcock Street,place-babck,2026-04-22,2026-04-30,9
+Green-B,Chiswick Road,place-chswk,2026-04-22,2026-04-30,9
+Green-B,Allston Street,place-alsgr,2026-04-22,2026-04-30,9
+Green-B,South Street,place-sougr,2026-04-22,2026-04-30,9
+Green-B,Harvard Avenue,place-harvd,2026-04-22,2026-04-30,9
+Green-B,Packards Corner,place-brico,2026-04-22,2026-04-30,9
+Green-B,Griggs Street,place-grigg,2026-04-22,2026-04-30,9
+Green-B,Chestnut Hill Avenue,place-chill,2026-04-22,2026-04-30,9
+Orange,Back Bay,place-bbsta,2026-03-01,2026-09-14,8
+Red,Wollaston,place-wlsta,2026-02-23,2026-05-31,7
+Red,North Quincy,place-nqncy,2026-05-02,2026-05-31,6
+Red,JFK/UMass,place-jfk,2026-05-02,2026-05-31,6
+Blue,State,place-state,2026-01-24,2026-05-10,4
+Blue,Government Center,place-gover,2026-01-24,2026-05-10,4
+Blue,Aquarium,place-aqucl,2026-01-24,2026-05-10,4
+Blue,Maverick,place-mvbcl,2026-01-24,2026-05-10,4
+Blue,Bowdoin,place-bomnl,2026-01-24,2026-05-10,4
+Green-D,Longwood,place-longw,2026-04-25,2026-04-26,2
+Blue,Wood Island,place-wimnl,2026-01-24,2026-01-25,2
+Blue,Beachmont,place-bmmnl,2026-06-26,2026-07-24,2
+Blue,Suffolk Downs,place-sdmnl,2026-06-26,2026-07-24,2
+Blue,Airport,place-aport,2026-01-24,2026-01-25,2
+Green-D,Fenway,place-fenwy,2026-04-25,2026-04-26,2
+Green-D,Kenmore,place-kencl,2026-04-25,2026-04-26,2
+Green-D,Brookline Village,place-bvmnl,2026-04-25,2026-04-26,2
+Blue,Revere Beach,place-rbmnl,2026-06-26,2026-07-24,2
+Blue,Wonderland,place-wondl,2026-06-26,2026-07-24,2
+Blue,Orient Heights,place-orhte,2026-06-26,2026-07-24,2
+Red,Quincy Center,place-qnctr,2026-02-23,2026-02-23,1
+Green-D,North Station,place-north,2026-08-15,2026-08-15,1
+Red,Quincy Adams,place-qamnl,2026-02-23,2026-02-23,1
+Green-E,North Station,place-north,2026-08-02,2026-08-02,1

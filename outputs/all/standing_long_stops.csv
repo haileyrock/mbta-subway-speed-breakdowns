@@ -1,0 +1,6 @@
+route_id,direction_id,parent,n_long,med_long_min,iqr_rel,lo,hi,station_name
+Green-E,0,place-balsq,51,24.933333333333334,0.33455882352941174,1217.0,4021.0,Ball Square
+Green-D,1,place-lech,91,34.18333333333333,0.2825450999512433,1414.8000000000002,5423.0,Lechmere
+Green-D,0,place-north,90,41.55,0.09917769755314881,1399.2,3104.5999999999995,North Station
+Green-D,1,place-spmnl,173,44.45,0.12373453318335208,1816.52,3142.28,Science Park/West End
+Green-D,0,place-spmnl,270,45.733333333333334,0.05448250728862974,1558.54,3371.8600000000006,Science Park/West End

@@ -1,0 +1,102 @@
+
+=== TOP 15 stations by incidents (baseline=sched) ===
+              station        lines  incidents_3min  incidents_4min  incidents_5min  incidents_10min  events_10min  lead_dwell_share  train_visits  incidents_per_10k_visits_10min
+             Woodland        Green           783.0           555.0           464.0            295.0         335.0              1.00         70569                           41.80
+                Waban        Green           538.0           437.0           386.0            221.0         240.0              0.39         71492                           30.91
+            Haymarket Green/Orange          1203.0           952.0           692.0            176.0         277.0              0.82        246898                            7.13
+Science Park/West End        Green          1171.0           674.0           406.0            175.0         245.0              0.59        140301                           12.47
+        Magoun Square        Green           276.0           250.0           252.0            165.0         199.0              0.48         79162                           20.84
+        Gilman Square        Green           282.0           254.0           246.0            153.0         169.0              0.55         79371                           19.28
+              Harvard          Red          2026.0           912.0           571.0            152.0         277.0              0.73        111789                           13.60
+                Eliot        Green           379.0           302.0           276.0            150.0         172.0              0.51         71639                           20.94
+            Reservoir        Green          1400.0           828.0           495.0            143.0         163.0              0.53         68380                           20.91
+          Park Street        Green          1950.0          1402.0           905.0            142.0         225.0              0.90        349191                            4.07
+                Davis          Red          1358.0           879.0           638.0            140.0         198.0              0.47        111728                           12.53
+             Maverick         Blue           794.0           501.0           373.0            138.0         167.0              0.96        105501                           13.08
+          Ball Square        Green           577.0           395.0           332.0            131.0         149.0              0.96         77120                           16.99
+    Government Center   Blue/Green          1005.0           540.0           359.0            128.0         150.0              0.75        239316                            5.35
+              Central          Red          1240.0           595.0           382.0            120.0         207.0              0.81        111859                           10.73
+
+=== TOP 15 stations by incidents (baseline=median) ===
+              station        lines  incidents_3min  incidents_4min  incidents_5min  incidents_10min  events_10min  lead_dwell_share  train_visits  incidents_per_10k_visits_10min
+             Woodland        Green           798.0           560.0           465.0            294.0         335.0              1.00         70569                           41.66
+                Waban        Green           600.0           448.0           397.0            244.0         263.0              0.35         71492                           34.13
+Science Park/West End        Green          1182.0           700.0           419.0            179.0         252.0              0.57        140301                           12.76
+            Haymarket Green/Orange          1191.0           941.0           694.0            176.0         278.0              0.81        246898                            7.13
+        Magoun Square        Green           280.0           250.0           251.0            165.0         201.0              0.48         79162                           20.84
+                Eliot        Green           395.0           303.0           277.0            161.0         186.0              0.47         71639                           22.47
+        Gilman Square        Green           290.0           255.0           252.0            160.0         178.0              0.52         79371                           20.16
+              Harvard          Red          2142.0           978.0           613.0            159.0         288.0              0.70        111789                           14.22
+            Reservoir        Green          1420.0           851.0           512.0            146.0         167.0              0.52         68380                           21.35
+                Davis          Red          1407.0           900.0           670.0            144.0         204.0              0.46        111728                           12.89
+          Park Street        Green          1923.0          1364.0           890.0            142.0         231.0              0.89        349191                            4.07
+             Maverick         Blue           796.0           496.0           373.0            139.0         168.0              0.95        105501                           13.18
+    Government Center   Blue/Green          1217.0           659.0           416.0            133.0         158.0              0.72        239316                            5.56
+          Ball Square        Green           577.0           392.0           328.0            131.0         149.0              0.96         77120                           16.99
+              Central          Red          1243.0           600.0           383.0            122.0         209.0              0.80        111859                           10.91
+
+=== SPEED (mph) ===
+                      level                 name  n_segments  miles_observed  running_mph  running_mph_clean  actual_door_to_door_mph  scheduled_mph  actual_door_to_door_mph_clean  actual_vs_sched_pct
+                       line                 Blue     1143439        621057.0        29.18              32.36                    17.33          19.58                          17.22                -11.5
+                       line Green (all branches)     5854496       2334547.0        16.88              18.41                    10.20          10.43                          10.47                 -2.2
+                       line               Orange     2030052       1213929.0        35.50              35.33                    19.40          20.49                          16.97                 -5.3
+                       line                  Red     1845744       1674528.0        29.75              31.49                    20.11          21.43                          18.86                 -6.2
+branch (incl. shared trunk)              Green-B     1422221        420398.0        14.45              15.60                     8.10           8.29                           8.27                 -2.3
+branch (incl. shared trunk)              Green-C     1174134        325230.0        14.94              15.61                     8.49           8.63                           8.41                 -1.6
+branch (incl. shared trunk)              Green-D     1615260        965028.0        19.90              24.07                    13.30          13.66                          15.61                 -2.6
+branch (incl. shared trunk)              Green-E     1642881        623891.0        16.01              15.91                     9.67           9.86                           9.01                 -1.9
+        green segment class   Green shared trunk     2337228        969262.0        15.18              16.39                     9.67           9.94                          10.12                 -2.7
+        green segment class  Green-B branch-only     1056329        283225.0        14.53              16.07                     7.75           7.86                           7.71                 -1.4
+        green segment class  Green-C branch-only      791504        181857.0        15.88              16.05                     8.20           8.14                           7.44                  0.7
+        green segment class  Green-D branch-only      962327        724172.0        24.10              27.90                    17.07          17.70                          18.48                 -3.6
+        green segment class  Green-E branch-only      707108        176031.0        13.05              12.78                     7.25           7.36                           7.00                 -1.5
+
+=== DIAGNOSTICS ===
+{
+ "shutdown_station_days": 2336,
+ "shutdown_ext_station_days": 3090,
+ "habitual_hold_station_months": 73,
+ "habitual_hold_groups": 12,
+ "segments_total": 11054651,
+ "segments_without_gtfs_pair": 84806,
+ "segments_over_max_min": 28,
+ "recurring_segment_delay_segment_months": 4,
+ "incident_size_3min_events_mean_p99_max": [
+  1.76,
+  11.0,
+  286
+ ],
+ "candidates_sched_3min": 99217,
+ "incidents_sched_3min": 56232,
+ "incident_size_4min_events_mean_p99_max": [
+  1.59,
+  9.0,
+  105
+ ],
+ "candidates_sched_4min": 52240,
+ "incidents_sched_4min": 32847,
+ "incident_size_5min_events_mean_p99_max": [
+  1.53,
+  9.0,
+  73
+ ],
+ "candidates_sched_5min": 33153,
+ "incidents_sched_5min": 21683,
+ "incident_size_10min_events_mean_p99_max": [
+  1.36,
+  6.0,
+  37
+ ],
+ "candidates_sched_10min": 8799,
+ "incidents_sched_10min": 6448,
+ "candidates_median_3min": 106954,
+ "incidents_median_3min": 57592,
+ "candidates_median_4min": 55851,
+ "incidents_median_4min": 33730,
+ "candidates_median_5min": 35100,
+ "incidents_median_5min": 22265,
+ "candidates_median_10min": 9141,
+ "incidents_median_10min": 6629,
+ "rank_corr_sched_vs_median_baseline_headline": 0.996854700939575,
+ "segments_dropped_over_70mph": 93889
+}

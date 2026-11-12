@@ -1,0 +1,14 @@
+level,name,n_segments,miles_observed,running_mph,running_mph_clean,actual_door_to_door_mph,scheduled_mph,actual_door_to_door_mph_clean,actual_vs_sched_pct
+line,Blue,1143439,621057.0,29.18,32.36,17.33,19.58,17.22,-11.5
+line,Green (all branches),5854496,2334547.0,16.88,18.41,10.2,10.43,10.47,-2.2
+line,Orange,2030052,1213929.0,35.5,35.33,19.4,20.49,16.97,-5.3
+line,Red,1845744,1674528.0,29.75,31.49,20.11,21.43,18.86,-6.2
+branch (incl. shared trunk),Green-B,1422221,420398.0,14.45,15.6,8.1,8.29,8.27,-2.3
+branch (incl. shared trunk),Green-C,1174134,325230.0,14.94,15.61,8.49,8.63,8.41,-1.6
+branch (incl. shared trunk),Green-D,1615260,965028.0,19.9,24.07,13.3,13.66,15.61,-2.6
+branch (incl. shared trunk),Green-E,1642881,623891.0,16.01,15.91,9.67,9.86,9.01,-1.9
+green segment class,Green shared trunk,2337228,969262.0,15.18,16.39,9.67,9.94,10.12,-2.7
+green segment class,Green-B branch-only,1056329,283225.0,14.53,16.07,7.75,7.86,7.71,-1.4
+green segment class,Green-C branch-only,791504,181857.0,15.88,16.05,8.2,8.14,7.44,0.7
+green segment class,Green-D branch-only,962327,724172.0,24.1,27.9,17.07,17.7,18.48,-3.6
+green segment class,Green-E branch-only,707108,176031.0,13.05,12.78,7.25,7.36,7.0,-1.5

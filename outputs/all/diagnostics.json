@@ -1,0 +1,48 @@
+{
+ "shutdown_station_days": 2336,
+ "shutdown_ext_station_days": 3090,
+ "habitual_hold_station_months": 73,
+ "habitual_hold_groups": 12,
+ "segments_total": 11054651,
+ "segments_without_gtfs_pair": 84806,
+ "segments_over_max_min": 28,
+ "recurring_segment_delay_segment_months": 4,
+ "incident_size_3min_events_mean_p99_max": [
+  1.76,
+  11.0,
+  286
+ ],
+ "candidates_sched_3min": 99217,
+ "incidents_sched_3min": 56232,
+ "incident_size_4min_events_mean_p99_max": [
+  1.59,
+  9.0,
+  105
+ ],
+ "candidates_sched_4min": 52240,
+ "incidents_sched_4min": 32847,
+ "incident_size_5min_events_mean_p99_max": [
+  1.53,
+  9.0,
+  73
+ ],
+ "candidates_sched_5min": 33153,
+ "incidents_sched_5min": 21683,
+ "incident_size_10min_events_mean_p99_max": [
+  1.36,
+  6.0,
+  37
+ ],
+ "candidates_sched_10min": 8799,
+ "incidents_sched_10min": 6448,
+ "candidates_median_3min": 106954,
+ "incidents_median_3min": 57592,
+ "candidates_median_4min": 55851,
+ "incidents_median_4min": 33730,
+ "candidates_median_5min": 35100,
+ "incidents_median_5min": 22265,
+ "candidates_median_10min": 9141,
+ "incidents_median_10min": 6629,
+ "rank_corr_sched_vs_median_baseline_headline": 0.996854700939575,
+ "segments_dropped_over_70mph": 93889
+}

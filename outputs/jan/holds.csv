@@ -1,0 +1,9 @@
+route_id,direction_id,parent,visits,n_long,share_long,station_name
+Green-D,1,place-bcnfd,3580,563,0.15726256983240222,Beaconsfield
+Green-E,1,place-brmnl,3706,488,0.13167835941716136,Brigham Circle
+Green-B,1,place-harvd,3499,384,0.10974564161188911,Harvard Avenue
+Green-C,1,place-cool,3617,349,0.09648880287531103,Coolidge Corner
+Green-D,1,place-rsmnl,3618,320,0.08844665561083472,Reservoir
+Green-B,1,place-kencl,3451,253,0.07331208345407128,Kenmore
+Green-C,0,place-pktrm,3202,212,0.06620861961274203,Park Street
+Green-B,0,place-pktrm,3059,202,0.06603465184700882,Park Street
